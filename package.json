@@ -1,0 +1,34 @@
+{
+  "name": "@pohodnik/eslint",
+  "version": "1.0.0",
+  "description": "Pohodnik JS code style",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "git+https://github.com/pohodnik/eslint.git",
+  "keywords": [
+    "eslint",
+    "codestyle",
+    "js",
+    "es6",
+    "pohodnik",
+    "pohodnik58"
+  ],
+  "author": "Pohodnik <pohodnik58@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pohodnik/eslint/issues"
+  },
+  "homepage": "https://github.com/pohodnik/eslint#readme",
+  "dependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.8.1",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jest": "^24.0.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.1.0"
+  }
+}
