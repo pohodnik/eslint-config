@@ -1,12 +1,12 @@
 {
-  "name": "@pohodnik/eslint",
+  "name": "@pohodnik/eslint-config",
   "version": "1.0.0",
   "description": "Pohodnik JS code style",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": "git+https://github.com/pohodnik/eslint.git",
+  "repository": "git+https://github.com/pohodnik/eslint-config.git",
   "keywords": [
     "eslint",
     "codestyle",
@@ -18,9 +18,9 @@
   "author": "Pohodnik <pohodnik58@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pohodnik/eslint/issues"
+    "url": "https://github.com/pohodnik/eslint-config/issues"
   },
-  "homepage": "https://github.com/pohodnik/eslint#readme",
+  "homepage": "https://github.com/pohodnik/eslint-config#readme",
   "dependencies": {
     "babel-eslint": "^10.1.0",
     "eslint": "^7.8.1",
