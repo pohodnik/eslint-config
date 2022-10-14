@@ -10,19 +10,24 @@ module.exports = {
     ],
     "globals": {
     },
-    "parser": "babel-eslint",
+    "parser": "@typescript-eslint/parser",
 
     "parserOptions": {
         "ecmaFeatures": {
             "experimentalObjectRestSpread": true,
             "jsx": true
         },
-        "ecmaVersion": 2018,
+        "ecmaVersion": 2020,
         "sourceType": "module"
     },
     "plugins": [
-        "import"
+        "@typescript-eslint"
     ],
+	settings: {
+        react: {
+            version: "detect" // Tells eslint-plugin-react to automatically detect the version of React to use
+        }
+    },
     "rules": {
         "indent": ["error", 4],
         "linebreak-style": ["error", "windows"],
@@ -40,7 +45,8 @@ module.exports = {
         "max-len": ["error", { "code": 255 }],
         "no-script-url": 0,
         "object-curly-newline": ["error", { "minProperties": 8, "consistent": true}],
-        "no-unused-expressions": ["error", { "allowShortCircuit": true }]
+        "no-unused-expressions": ["error", { "allowShortCircuit": true }],
+		"@typescript-eslint/no-var-requires": 0
     }
 }
 
