@@ -39,8 +39,8 @@ jobs:
 
       - name: Pushing new version to git
         run: |
-          git push
-          git push --tags
+          git push -f
+          git push --tags -f
       - name: Prepare NPM
         run: echo "//registry.npmjs.org/:_authToken=${{secrets.NPM_TOKEN}}" >> ./.npmrc
 
