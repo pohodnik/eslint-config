@@ -1,6 +1,6 @@
 {
   "name": "@pohodnik/eslint-config",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "Pohodnik JS code style",
   "main": "index.js",
   "scripts": {
