@@ -26,6 +26,11 @@ module.exports = {
 	settings: {
         react: {
             version: "detect" // Tells eslint-plugin-react to automatically detect the version of React to use
+        },
+        "import/resolver": {
+            "node": {
+                "extensions": [".js", ".jsx", ".ts", ".tsx"]
+            }
         }
     },
     "rules": {
@@ -46,7 +51,17 @@ module.exports = {
         "no-script-url": 0,
         "object-curly-newline": ["error", { "minProperties": 8, "consistent": true}],
         "no-unused-expressions": ["error", { "allowShortCircuit": true }],
-		"@typescript-eslint/no-var-requires": 0
+		"@typescript-eslint/no-var-requires": 0,
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+                "js": "never",
+                "jsx": "never",
+                "ts": "never",
+                "tsx": "never"
+            }
+        ]
     }
 }
 
