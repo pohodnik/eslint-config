@@ -1,14 +1,10 @@
-module.exports = {
-    "env": {
-        "jest/globals": true
-    },
-    "extends": [
-        "plugin:jest/recommended"
-    ],
-    "plugins": [
-        "jest"
-    ],
-    "rules": {
-    }
-}
+const pluginJest = require('eslint-plugin-jest');
 
+module.exports = [
+  pluginJest.configs['flat/recommended'],
+  {
+    languageOptions: {
+      globals: pluginJest.environments.globals.globals,
+    },
+  }
+];
