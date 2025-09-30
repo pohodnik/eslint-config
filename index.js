@@ -1,14 +1,12 @@
 const js = require("@eslint/js");
-const tsEslint = require("typescript-eslint");
-const importPlugin = require("eslint-plugin-import");
-const eslintPluginPrettierRecommended = require("eslint-plugin-prettier/recommended");
 const globals = require("globals");
-const { defineConfig } = require("eslint/config");
 
-module.exports = defineConfig([
+module.exports = [
+  // Base recommended configs
+  js.configs.recommended,
+  
+  // Global settings
   {
-    // Base configuration
-    files: ["**/*.{js,jsx,ts,tsx}"],
     languageOptions: {
       ecmaVersion: "latest",
       sourceType: "module",
@@ -24,11 +22,13 @@ module.exports = defineConfig([
       }
     },
   },
-  js.configs.recommended,
-  ...tsEslint.configs.recommended,
+
+  // TypeScript configuration
   {
-    // TypeScript specific rules
     files: ["**/*.{ts,tsx}"],
+    plugins: {
+      "@typescript-eslint": require("typescript-eslint"),
+    },
     rules: {
       "@typescript-eslint/no-unused-vars": [
         "error",
@@ -51,13 +51,13 @@ module.exports = defineConfig([
       "@typescript-eslint/no-empty-object-type": "off",
       "@typescript-eslint/no-empty-function": "off",
       "@typescript-eslint/no-unused-expressions": "off",
-    }
+    },
   },
-  eslintPluginPrettierRecommended,
+
+  // Import configuration
   {
-    // Import plugin configuration
     plugins: {
-      import: importPlugin,
+      import: require("eslint-plugin-import"),
     },
     settings: {
       "import/parsers": {
@@ -115,10 +115,21 @@ module.exports = defineConfig([
       "import/newline-after-import": ["error", { "count": 1 }]
     },
   },
+
+  // Prettier configuration
   {
-    // Common rules
+    plugins: {
+      prettier: require("eslint-plugin-prettier"),
+    },
+    rules: {
+      ...require("eslint-plugin-prettier/recommended").rules,
+    },
+  },
+
+  // Common rules
+  {
     rules: {
       "eol-last": ["error", "always"],
     },
   }
-]);
+];
