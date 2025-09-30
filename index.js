@@ -3,8 +3,9 @@ const tsEslint = require("typescript-eslint");
 const importPlugin = require("eslint-plugin-import");
 const eslintPluginPrettierRecommended = require("eslint-plugin-prettier/recommended");
 const globals = require("globals");
+const { defineConfig } = require("eslint/config");
 
-module.exports = [
+module.exports = defineConfig([
   js.configs.recommended,
   ...tsEslint.configs.recommended,
   {
@@ -117,4 +118,4 @@ module.exports = [
       ],
     },
   }
-];
+]);
