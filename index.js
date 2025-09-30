@@ -6,20 +6,30 @@ const globals = require("globals");
 const { defineConfig } = require("eslint/config");
 
 module.exports = defineConfig([
+  {
+    // Base configuration
+    files: ["**/*.{js,jsx,ts,tsx}"],
+    languageOptions: {
+      ecmaVersion: "latest",
+      sourceType: "module",
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+        ...globals.es6,
+      }
+    },
+  },
   js.configs.recommended,
   ...tsEslint.configs.recommended,
   {
+    // TypeScript specific rules
+    files: ["**/*.{ts,tsx}"],
     rules: {
-      "@typescript-eslint/no-unused-vars": "error",
-      "@typescript-eslint/no-shadow": "error",
-      "@typescript-eslint/no-redeclare": 0,
-      "@typescript-eslint/no-var-requires": 0,
-      "@typescript-eslint/no-explicit-any": 0,
-      "@typescript-eslint/explicit-module-boundary-types": 0,
-      "@typescript-eslint/no-non-null-assertion": 0,
-      "@typescript-eslint/no-empty-object-type": "off",
-      "@typescript-eslint/no-empty-function": "off",
-      "@typescript-eslint/no-unused-expressions": "off",
       "@typescript-eslint/no-unused-vars": [
         "error",
         {
@@ -32,12 +42,23 @@ module.exports = defineConfig([
           ignoreRestSiblings: true,
         },
       ],
+      "@typescript-eslint/no-shadow": "error",
+      "@typescript-eslint/no-redeclare": "off",
+      "@typescript-eslint/no-var-requires": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/explicit-module-boundary-types": "off",
+      "@typescript-eslint/no-non-null-assertion": "off",
+      "@typescript-eslint/no-empty-object-type": "off",
+      "@typescript-eslint/no-empty-function": "off",
+      "@typescript-eslint/no-unused-expressions": "off",
     }
   },
   eslintPluginPrettierRecommended,
-  importPlugin.flatConfigs.recommended,
-  importPlugin.flatConfigs.typescript,
   {
+    // Import plugin configuration
+    plugins: {
+      import: importPlugin,
+    },
     settings: {
       "import/parsers": {
         "@typescript-eslint/parser": [".ts", ".tsx"]
@@ -49,7 +70,7 @@ module.exports = defineConfig([
       }
     },
     rules: {
-      "import/no-anonymous-default-export": 0,
+      "import/no-anonymous-default-export": "off",
       "import/order": [
         "error",
         {
@@ -73,7 +94,7 @@ module.exports = defineConfig([
               "position": "after"
             },
             {
-              "pattern": "{.,..}/*\.less",
+              "pattern": "{.,..}/*.less",
               "group": "sibling",
               "position": "after"
             }
@@ -88,34 +109,16 @@ module.exports = defineConfig([
           }
         }
       ],
-      "import/no-named-as-default": 0,
-      "import/no-named-as-default-member": 0,
-      "import/default": 0,
+      "import/no-named-as-default": "off",
+      "import/no-named-as-default-member": "off",
+      "import/default": "off",
       "import/newline-after-import": ["error", { "count": 1 }]
     },
   },
-
-  // common
   {
-    languageOptions: {
-      ecmaVersion: "latest",
-      sourceType: "module",
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-        },
-      },
-      globals: {
-        ...globals.browser,
-        ...globals.node,
-        ...globals.es6,
-      }
-    },
+    // Common rules
     rules: {
-      "eol-last": [
-        "error",
-        "always"
-      ],
+      "eol-last": ["error", "always"],
     },
   }
 ]);
